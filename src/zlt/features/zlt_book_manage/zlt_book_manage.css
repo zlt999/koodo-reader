@@ -1,0 +1,13 @@
+/*
+ * zlt「图书管理」子页面样式
+ * 页面填充 zlt 工作区 body；表格样式见 src/zlt/components/zlt_book_table/zlt_book_table.css。
+ */
+
+.zlt-book-manage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}

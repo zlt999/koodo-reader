@@ -16,7 +16,7 @@
 dist/
 
 /build/*
-/.vscode
+# /.vscode
 /.claude
 /.superpowers
 /.playwright-mcp
@@ -41,3 +41,4 @@ kookit-extra.mjs
 kookit-extra-browser.js
 kookit-extra-browser.mjs
 *.exe
+.agents/pipeline/

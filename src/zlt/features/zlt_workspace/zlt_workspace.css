@@ -1,0 +1,84 @@
+/*
+ * zlt 工作区样式
+ * 使用官方主题 CSS 变量（--divider / --text-color / --tab-active-bg 等），
+ * 自动适配软件的明暗主题，保持与原生界面一致的风格。
+ * 全部选择器以 .zlt-workspace 前缀强隔离，杜绝污染官方全局样式。
+ */
+
+/*
+ * [zlt-mod] 定位基准对齐官方内容区：
+ * 官方 .sidebar 宽 190px（固定左侧），.header 高 80px（margin-left:190px）。
+ * 官方 .book-list-container-parent 用 top:80px / left:220px（= 侧边栏 190 + 30px 留白）。
+ * 工作区采用与官方首页完全一致的 top:80px / left:220px，切换时左边缘不跳动；
+ * 否则会盖住侧边栏与 Header，导致布局错乱。
+ * 侧边栏折叠时由 component.tsx 内联样式覆盖为 left:70px（同官方首页）。
+ */
+.zlt-workspace {
+  position: absolute;
+  top: 80px;
+  left: 220px;
+  width: calc(100% - 220px);
+  height: calc(100% - 80px);
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.zlt-workspace-tabbar {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 48px;
+  padding: 0;
+  border-bottom: 1px solid var(--divider);
+  box-sizing: border-box;
+}
+
+.zlt-workspace-tab {
+  position: relative;
+  height: 48px;
+  line-height: 48px;
+  padding: 0 14px;
+  font-size: 15px;
+  color: var(--text-weak);
+  cursor: pointer;
+  user-select: none;
+  transition: color 0.2s ease;
+}
+
+.zlt-workspace-tab:hover {
+  color: var(--text-color);
+}
+
+.zlt-workspace-tab-active {
+  color: var(--text-color);
+  font-weight: 600;
+}
+
+.zlt-workspace-tab-active::after {
+  content: "";
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: -1px;
+  height: 2px;
+  border-radius: 2px;
+  background-color: var(--active-theme-color, var(--link-color));
+}
+
+.zlt-workspace-body {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.zlt-workspace-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: var(--text-weak);
+  font-size: 15px;
+}

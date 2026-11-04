@@ -2,6 +2,7 @@
 import DeletedBookList from "../containers/lists/deletedBookList";
 import NoteList from "../containers/lists/noteList";
 import EmptyPage from "../containers/emptyPage";
+import { zltManagerRoutes } from "../zlt/zlt_registry";
 
 export const routes = [
   { path: "empty", component: EmptyPage },
@@ -11,5 +12,6 @@ export const routes = [
   { path: "shelf", component: BookList },
   { path: "favorite", component: BookList },
   { path: "trash", component: DeletedBookList },
+  ...zltManagerRoutes, // [zlt] 挂载点 B：zlt 工作区主路由（单行尾挂载）
 ];
 

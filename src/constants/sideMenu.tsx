@@ -1,3 +1,5 @@
+import { zltSideMenu } from "../zlt/zlt_registry";
+
 export const sideMenu = [
   {
     name: "Books",
@@ -25,4 +27,5 @@ export const sideMenu = [
     icon: "trash-line",
     mode: "trash",
   },
+  ...zltSideMenu, // [zlt] 挂载点 A：zlt 工作区侧边栏入口（单行尾挂载）
 ];

@@ -1,0 +1,24 @@
+/*
+ * zlt 自定义图标
+ *
+ * 官方侧边栏按 `icon-${item.icon}` 生成 class，并以 icomoon 字体的 ::before 渲染。
+ * 这里不修改官方 icomoon 字体，而是用同名约定的 class + SVG mask 绘制图标：
+ *   - background-color: currentColor → 自动跟随官方选中态与明暗主题颜色；
+ *   - 尺寸 1em → 与官方图标同受 .side-menu-icon 的 font-size 控制；
+ *   - 线条风格与官方 *-line 描边图标保持一致（描边 1.5/24，圆角拐点）。
+ * 全部选择器以 icon-zlt- 前缀隔离。
+ */
+
+/* Z 字母图标（空心描边）：用于侧边栏「ZLT」工作区入口 */
+.icon-zlt-z:before {
+  content: "";
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: middle;
+  background-color: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.5' stroke-linejoin='round'%3E%3Cpath d='M4.5 3.5H19.5V7.7L10 16.3H20.5V20.5H3.5V16.3H4.5L14 7.7H4.5Z'/%3E%3C/svg%3E")
+    center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.5' stroke-linejoin='round'%3E%3Cpath d='M4.5 3.5H19.5V7.7L10 16.3H20.5V20.5H3.5V16.3H4.5L14 7.7H4.5Z'/%3E%3C/svg%3E")
+    center / contain no-repeat;
+}

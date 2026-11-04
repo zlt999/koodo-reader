@@ -1,0 +1,46 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      // 调试 Electron 主进程（main.js）。会自动先启动 React 开发服务器
+      "name": "Electron: Main",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron",
+      "windows": {
+        "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron.cmd"
+      },
+      "args": [".", "--remote-debugging-port=9222"],
+      "outputCapture": "std",
+      "preLaunchTask": "react: start",
+      "skipFiles": ["<node_internals>/**"]
+    },
+    {
+      // 附加到 Electron 渲染进程（需先运行 "Electron: Main"）
+      "name": "Electron: Renderer",
+      "type": "chrome",
+      "request": "attach",
+      "port": 9222,
+      "webRoot": "${workspaceFolder}/src",
+      "timeout": 30000
+    },
+    {
+      // 仅浏览器模式调试（Web 版），会自动先启动 React 开发服务器
+      "name": "Web: Chrome",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:3000",
+      "webRoot": "${workspaceFolder}/src",
+      "preLaunchTask": "react: start"
+    }
+  ],
+  "compounds": [
+    {
+      // 一键启动：主进程 + 渲染进程同时调试
+      "name": "Electron: All",
+      "configurations": ["Electron: Main", "Electron: Renderer"],
+      "stopAll": true
+    }
+  ]
+}

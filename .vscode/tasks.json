@@ -1,0 +1,36 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      // 启动 CRA 开发服务器（http://localhost:3000），供 Electron 开发模式加载
+      "label": "react: start",
+      "type": "shell",
+      "command": "yarn start",
+      "options": {
+        "env": {
+          "BROWSER": "none"
+        }
+      },
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "cra",
+        "pattern": {
+          "regexp": "^([^\\s].*)\\((\\d+),(\\d+)\\):\\s+(.*)$",
+          "file": 1,
+          "line": 2,
+          "column": 3,
+          "message": 4
+        },
+        "background": {
+          "activeBegins": true,
+          "beginsPattern": "Starting the development server|Compiling\\.\\.\\.",
+          "endsPattern": "Compiled successfully|Compiled with warnings|Failed to compile|webpack compiled"
+        }
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      }
+    }
+  ]
+}
